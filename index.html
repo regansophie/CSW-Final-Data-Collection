@@ -240,6 +240,8 @@ const CAT_IMAGES = [
           this.addRound(treatmentWords[i], false);
           this.timeline.push (nextWord);
           this.addRound(controlWords[i], true);
+          this.timeline.push(createAttentionCheckTrial(CAT_IMAGES, NON_CAT_IMAGES, this.timeline.length));
+
         }
 
         this.timeline.push ({
@@ -264,16 +266,17 @@ const CAT_IMAGES = [
         }); 
 
         this.timeline.push({
-        type: jsPsychInstructions,
-        pages: [
-            '<p>You have finished the experiment. Thank you for participating. Your response has been recorded.</p>' +
-            '<p>Your completion code is: COG4A1RQ</p>' +
-            '<p>Please go to <a href="https://app.prolific.com/submissions/complete?cc=COG4A1RQ">https://app.prolific.com/submissions/complete?cc=COG4A1RQ</a></p>',
-        ],
-        show_clickable_nav: true,
-        allow_backward: false,
-        button_label_next: "Exit"
-    });
+            type: jsPsychInstructions,
+            pages: [
+                '<p>You have finished the experiment. Thank you for participating. Your response has been recorded.</p>' +
+                '<p>Your completion code is: C18DWX9R</p>' +
+                '<p>Please go to <a href="https://app.prolific.com/submissions/complete?cc=C18DWX9R">this link</a> to complete your submission.</p>'
+            ],
+            show_clickable_nav: true,
+            allow_backward: false,
+            button_label_next: "Exit"
+        });
+
         
       }
 
@@ -429,8 +432,6 @@ addRound(targetWord, control) {
 
     this.timeline.push(createInstructionsTrial(targetWord));
     this.timeline.push(createTestTrial(targetWord, testTargetExemplars, testDistractors, this.timeline.length));
-    this.timeline.push(createAttentionCheckTrial(CAT_IMAGES, NON_CAT_IMAGES, this.timeline.length));
-
 }
 
     }
