@@ -473,7 +473,7 @@ addRound(targetWord, control) {
       };
     }
 
-function createAttentionCheckTrial(cats, non_cats, trialID) {
+unction createAttentionCheckTrial(cats, non_cats, trialID) {
     let numCatImages = Math.floor(Math.random() * 5) + 1;
     let sampled_cats = sampleWithoutReplacement(cats, numCatImages);
     let sampled_non_cats = sampleWithoutReplacement(non_cats, 9 - numCatImages);
@@ -483,8 +483,11 @@ function createAttentionCheckTrial(cats, non_cats, trialID) {
     let permutation = shuffle(exemplars);
     let targetPositions = [];
 
+    // Verify permutation and identify cat images
     for (let i = 0; i < permutation.length; i++) {
-        if (permutation[i] < cats.length) targetPositions.push(i);
+        if (sampled_cats.includes(exemplars[i])) {
+            targetPositions.push(i);
+        }
     }
 
     let trialHTML = "";
